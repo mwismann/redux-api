@@ -12,14 +12,16 @@ const Users = () => {
 
   return (
     <>
-    <h1>Hello world</h1>
-    {isLoading && <h2>Loading...</h2>}
-    {error && <h2>Something went wrong!</h2>}
-    <ul>
-      {users.results.map((user) => (
-        <li key={user.login.uuid}>{user.name.first} {user.name.last}</li>
-      ))}
-    </ul>
+      <h1>Hello world</h1>
+      {isLoading && <h2>Loading...</h2>}
+      {error && <h2>Something went wrong!</h2>}
+      <ul>
+        {users.map((user) => {
+          return (
+            <li key={user.login.uuid}>{user.name.title}. {user.name.first} {user.name.last}</li>
+          )
+        })}
+      </ul>
     </>
     );
 }

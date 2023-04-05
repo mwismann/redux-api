@@ -3,13 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const URL = 'https://randomuser.me/api/?results=5';
 
 const initialState = {
-  users: [
-    {
-      id: 1,
-      name: 'john',
-      lastName: 'Doe',
-    }
-  ],
+  users: [],
   isLoading: true,
   error: false,
 };
@@ -20,7 +14,7 @@ const fetchUsers = createAsyncThunk(
     try {
       const res = await fetch(URL);
       const data = await res.json();
-      return data;
+      return data.results;
     } catch(error) {
       return error;
     }
